@@ -1,47 +1,213 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tophat's Personal Page</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Личная страница Игоря Виноградова</title>
+    <!-- Подключение Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Использование шрифта Inter */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5; /* Светло-серый фон */
+        }
+        /* Стили для активной вкладки */
+        .nav-link.active {
+            border-bottom: 2px solid #3b82f6; /* Синяя линия под активной вкладкой */
+            color: #3b82f6;
+        }
+        /* Скрытие неактивных вкладок */
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        /* Плавный переход для появления секций */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .tab-content.active {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <div class="container">
-            <h1>Tophat's Personal Page</h1>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Шапка сайта -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-6">
+            <h1 class="text-3xl font-bold text-gray-900 text-center">Личная страница Игоря Виноградова</h1>
+            <!-- Навигация -->
+            <nav class="mt-4">
+                <ul class="flex justify-center space-x-6 md:space-x-8">
+                    <li><a href="#home" class="nav-link text-lg font-medium text-gray-600 hover:text-blue-500 pb-1 transition-colors duration-300 active">Главная</a></li>
+                    <li><a href="#gallery" class="nav-link text-lg font-medium text-gray-600 hover:text-blue-500 pb-1 transition-colors duration-300">Галерея</a></li>
+                    <li><a href="#contacts" class="nav-link text-lg font-medium text-gray-600 hover:text-blue-500 pb-1 transition-colors duration-300">Контакты</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
-    <div class="container">
-        <section class="bio">
-            <h2>Biography</h2>
-            <p>Hello! Привет моё имя Жирный Пончик Игорь. вы на моём сайте.Сдесь Вы увидете информацию обо-мне, мои фотки и моего брата.</p>
-        </section>
-        <section class="photos">
-            <h2>Photos</h2>
-            <div>
-                <img src="https://cdn.discordapp.com/attachments/978689366564143184/1243063867387547658/IMG-20240508-WA0000.jpg?ex=66501cf0&is=664ecb70&hm=219bbf08976a9b467d35782e928bc3260cf0092a9ec67a80a7cb944b4619b2fc&?size=50" alt="я" style="width: 35%; height: auto;">
-                <img src="https://cdn.discordapp.com/attachments/978689366564143184/1243065868263620628/2024-05-08_18-15-57.png?ex=66501ece&is=664ecd4e&hm=9810b6d7b07de8a56c842e2cb83e418e4b3929ca906fd9618009056bae931a1b&" alt="Мой брат" style="width: 35%; height: auto;">
-                <img src="photo3.jpg" alt="Мамы Нету">
+
+    <!-- Основной контент -->
+    <main class="container mx-auto p-4 md:p-6">
+
+        <!-- Вкладка: Главная -->
+        <div id="home" class="tab-content active">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Секция: Ознакомление -->
+                <section class="bg-white p-6 rounded-xl shadow-lg">
+                    <h2 class="text-2xl font-bold mb-4 border-b pb-2">Ознакомление</h2>
+                    <p>Привет! Меня зовут Игорь. Добро пожаловать на мой личный сайт. Здесь вы найдете информацию обо мне, моих увлечениях и проектах.</p>
+                </section>
+
+                <!-- Секция: Биография -->
+                <section class="bg-white p-6 rounded-xl shadow-lg">
+                    <h2 class="text-2xl font-bold mb-4 border-b pb-2">Биография</h2>
+                    <ul class="space-y-2">
+                        <li><strong>Имя:</strong> Igor Vinogradov</li>
+                        <li><strong>Возраст:</strong> 13 лет</li>
+                        <li><strong>Вес:</strong> 97кг</li>
+                        <li><strong>Цвет глаз:</strong> Карий</li>
+                        <li><strong>Цвет волос:</strong> Натурально Коричневые</li>
+                        <li><strong>До дня рождения:</strong> <span id="timer" class="font-semibold text-blue-600"></span></li>
+                        <li><strong>Любимая песня:</strong> <a href="https://youtu.be/DeUnnquIX1M?t=12" target="_blank" class="text-blue-500 hover:underline">Unstoppable Cat</a></li>
+                        <li><strong>Любимая игра:</strong> <a href="https://link.brawlstars.com/ru/" target="_blank" class="text-blue-500 hover:underline">Brawl Stars</a></li>
+                    </ul>
+                </section>
+                
+                <!-- Секция: Проекты-задачи -->
+                <section class="bg-white p-6 rounded-xl shadow-lg md:col-span-2">
+                    <h2 class="text-2xl font-bold mb-4 border-b pb-2">Проекты и цели</h2>
+                    <p class="mb-3">Здесь будут мои проекты-задачи:</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Работать все лето и купить <a href="https://re-store.ru/catalog/10210W64PNK/" target="_blank" class="text-blue-500 hover:underline">Айпад</a>.</li>
+                        <li>Достичь 50,000 трофеев в Brawl Stars.</li>
+                        <li>Научиться создавать 3D-модели в Blender.</li>
+                    </ul>
+                </section>
             </div>
-        </section>
-        <section class="projects">
-            <h2>Projects</h2>
-            <p>Here are some of my recent projects:</p>
-            <ul>
-                <li><strong>Project 1:</strong> <a href="https://www.example.com/project1" target="_blank">Description of project 1</a>.</li>
-                <li><strong>Project 2:</strong> <a href="https://www.example.com/project2" target="_blank">Description of project 2</a>.</li>
-                <li><strong>Project 3:</strong> <a href="https://www.example.com/project3" target="_blank">Description of project 3</a>.</li>
-            </ul>
-        </section>
-        <section class="contacts">
-            <h2>Contact</h2>
-            <p>You can reach me via the following methods:</p>
-            <ul>
-                <li>Мой ID Бравлстарс:#JGRLVPQ0</li>
-                <li>Номер телефона = +7 953 783-88-00</li>
-            </ul>
-        </section>
-    </div>
+        </div>
+
+        <!-- Вкладка: Галерея -->
+        <div id="gallery" class="tab-content">
+            <section class="bg-white p-6 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold mb-4 border-b pb-2">Галерея</h2>
+                <p class="mb-6">Здесь собраны фотографии из моей жизни.</p>
+                <!-- Сетка с фотографиями -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <!-- Используем placehold.co для временных изображений -->
+                    <img src="https://placehold.co/400x400/3b82f6/ffffff?text=Я" alt="Это я" class="w-full h-auto rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                    <img src="https://placehold.co/400x400/10b981/ffffff?text=Мой+брат" alt="Мой брат" class="w-full h-auto rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                    <img src="https://placehold.co/400x400/ef4444/ffffff?text=Мой+кот" alt="Мой кот" class="w-full h-auto rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                    <img src="https://placehold.co/400x400/f97316/ffffff?text=Отдых" alt="На отдыхе" class="w-full h-auto rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                    <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=Хобби" alt="Мое хобби" class="w-full h-auto rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                    <img src="https://placehold.co/400x400/ec4899/ffffff?text=Друзья" alt="С друзьями" class="w-full h-auto rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                </div>
+            </section>
+        </div>
+
+        <!-- Вкладка: Контакты -->
+        <div id="contacts" class="tab-content">
+            <section class="bg-white p-6 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold mb-4 border-b pb-2">Контакты</h2>
+                <p class="mb-4">Вы можете связаться со мной следующими способами:</p>
+                <ul class="space-y-3">
+                    <li><strong>Мой ID в Brawl Stars:</strong> <span class="font-mono bg-gray-200 px-2 py-1 rounded">#JGRLVPQ0</span></li>
+                    <li><strong>Номер телефона:</strong> <a href="tel:+79537838800" class="text-blue-500 hover:underline">+7 953 783-88-00</a></li>
+                    <li><strong>YouTube канал:</strong> <a href="https://www.youtube.com/channel/UCQ-NRZVpDt8GnUn_JvYOgLw" target="_blank" class="text-blue-500 hover:underline">Перейти на YouTube</a></li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <!-- Виджет активных пользователей -->
+    <div id="active-users" class="fixed bottom-4 right-4 bg-gray-800 text-white px-4 py-2 rounded-lg shadow-2xl text-sm"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- ЛОГИКА ПЕРЕКЛЮЧЕНИЯ ВКЛАДОК ---
+            const navLinks = document.querySelectorAll('.nav-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Убираем класс 'active' у всех ссылок и контента
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    tabContents.forEach(t => t.classList.remove('active'));
+                    
+                    // Добавляем класс 'active' к нажатой ссылке и соответствующему контенту
+                    const targetId = this.getAttribute('href');
+                    this.classList.add('active');
+                    document.querySelector(targetId).classList.add('active');
+                });
+            });
+
+            // --- ЛОГИКА ТАЙМЕРА ОБРАТНОГО ОТСЧЕТА ---
+            function startTimer(endtime, display) {
+                function updateTimer() {
+                    let now = new Date();
+                    let t = endtime - now;
+
+                    // Если дата прошла, устанавливаем ее на следующий год
+                    if (t < 0) {
+                        endtime.setFullYear(endtime.getFullYear() + 1);
+                        t = endtime - now;
+                    }
+
+                    const days = Math.floor(t / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((t % (1000 * 60)) / 1000);
+
+                    display.textContent = `${days}д ${hours}ч ${minutes}м ${seconds}с`;
+                }
+                updateTimer();
+                setInterval(updateTimer, 1000);
+            }
+
+            // --- ЛОГИКА СЧЕТЧИКА АКТИВНЫХ ПОЛЬЗОВАТЕЛЕЙ ---
+            function updateActiveUsers(display) {
+                // Пытаемся получить значение из localStorage или устанавливаем случайное
+                let activeUsers = parseInt(localStorage.getItem('activeUsers')) || Math.floor(Math.random() * (3000 - 50 + 1)) + 50;
+
+                function refreshActiveUsers() {
+                    // Случайное изменение от -100 до +100
+                    let change = Math.floor(Math.random() * 201) - 100;
+                    activeUsers += change;
+
+                    // Ограничиваем количество пользователей в диапазоне 50-3000
+                    if (activeUsers < 50) activeUsers = 50;
+                    if (activeUsers > 3000) activeUsers = 3000;
+                    
+                    localStorage.setItem('activeUsers', activeUsers);
+                    display.textContent = `Сейчас на сайте: ${activeUsers}`;
+                }
+
+                refreshActiveUsers(); // Первый запуск
+                setInterval(refreshActiveUsers, 5000); // Обновление каждые 5 секунд
+            }
+
+            // --- ИНИЦИАЛИЗАЦИЯ СКРИПТОВ ---
+            // Установка даты дня рождения. Месяцы в JS начинаются с 0 (январь=0, июнь=5).
+            // Например, если день рождения 11 июня, то используем (2025, 5, 11)
+            const birthDay = new Date(new Date().getFullYear(), 5, 11); // 11 июня
+            const timerDisplay = document.querySelector('#timer');
+            if(timerDisplay) {
+                startTimer(birthDay, timerDisplay);
+            }
+
+            // Запуск счетчика активных пользователей
+            const activeUsersDisplay = document.querySelector('#active-users');
+            if(activeUsersDisplay) {
+                updateActiveUsers(activeUsersDisplay);
+            }
+        });
+    </script>
 </body>
 </html>
